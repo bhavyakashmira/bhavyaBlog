@@ -3,7 +3,7 @@ name: Notify Destination Repo
 on:
   push:
     paths:
-      - 'blogs/**'  # Adjust to your folder path
+      - 'blogs/**/*.md' 
     branches: [ main ]
 
 jobs:
