@@ -1,0 +1,19 @@
+name: Notify Destination Repo
+
+on:
+  push:
+    paths:
+      - 'blogs/**'  # Adjust to your folder path
+    branches: [ main ]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger destination repo
+        run: |
+          curl -X POST https://api.github.com/repos/bhavyakashmira/bhavya.kashmira/dispatches \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.PERSONAL_ACCESS_TOKEN }}" \
+            -d '{"event_type":"file_uploaded"}'
